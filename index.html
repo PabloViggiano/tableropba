@@ -1,312 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PJ Provincia de Buenos Aires</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índice - Panel de Análisis Territorial PBA</title>
+    <!-- Tailwind CSS para estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuentes de Google (Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <style>
-    :root{
-      --azul-base:#165f8e;
-      --azul-1:#165f8e;
-      --azul-2:#1b689a;
-      --azul-3:#2372a7;
-      --azul-4:#2b7cb4;
-      --azul-5:#3386c1;
-      --azul-6:#3e90cb;
-      --azul-7:#4a9ad4;
-      --azul-8:#58a6de;
-
-      --fondo:#eef2f5;
-      --blanco:#ffffff;
-      --texto:#1f2d3d;
-      --borde:#d9e2ea;
-      --sombra:0 10px 28px rgba(31,45,61,0.08);
-      --radio:22px;
-    }
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    body{
-      font-family:'Montserrat', sans-serif;
-      background:var(--fondo);
-      color:var(--texto);
-    }
-
-    .page{
-      width:100%;
-      min-height:100vh;
-      padding:22px;
-    }
-
-    .wrapper{
-      max-width:1700px;
-      margin:0 auto;
-    }
-
-    .header{
-      background:#165f8e;
-      border-radius:24px 24px 0 0;
-      overflow:hidden;
-      box-shadow:var(--sombra);
-    }
-
-    .header img{
-      display:block;
-      width:100%;
-      height:auto;
-    }
-
-    .main-box{
-      background:#f3f6f8;
-      box-shadow:var(--sombra);
-      padding:34px 36px 40px;
-      min-height:720px;
-    }
-
-    .main-grid{
-      display:grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap:34px;
-      align-items:start;
-    }
-
-    .map-panel{
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      min-height:620px;
-    }
-
-    .map-card{
-      width:100%;
-      max-width:650px;
-      min-height:620px;
-      border-radius:20px;
-      background:var(--blanco);
-      border:1px solid var(--borde);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-    }
-
-    .map-card img{
-      width:100%;
-      max-width:520px;
-      height:auto;
-      display:block;
-    }
-
-    .right-panel{
-      display:flex;
-      flex-direction:column;
-      padding-top:8px;
-    }
-
-    .right-title{
-      font-size:clamp(1.4rem, 2vw, 2rem);
-      font-weight:800;
-      color:var(--azul-base);
-      text-transform:uppercase;
-      margin-bottom:22px;
-      letter-spacing:0.01em;
-    }
-
-    .section-list{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      max-width:500px;
-    }
-
-    .section-btn{
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      text-decoration:none;
-      color:var(--blanco);
-      border-radius:10px;
-      padding:14px 18px;
-      min-height:58px;
-      box-shadow:0 6px 14px rgba(22,95,142,0.16);
-      transition:transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-    }
-
-    .section-btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 10px 18px rgba(22,95,142,0.22);
-      filter:brightness(1.03);
-    }
-
-    .section-label{
-      font-size:1rem;
-      font-weight:600;
-      line-height:1.2;
-    }
-
-    .section-arrow{
-      font-size:1.8rem;
-      line-height:1;
-      font-weight:400;
-      opacity:0.95;
-    }
-
-    .s1{ background:var(--azul-1); }
-    .s2{ background:var(--azul-2); }
-    .s3{ background:var(--azul-3); }
-    .s4{ background:var(--azul-4); }
-    .s5{ background:var(--azul-5); }
-    .s6{ background:var(--azul-6); }
-    .s7{ background:var(--azul-7); }
-    .s8{ background:var(--azul-8); }
-
-    .footer{
-      background:#f3f6f8;
-      border-top:1px solid var(--borde);
-      box-shadow:var(--sombra);
-      border-radius:0 0 24px 24px;
-      min-height:96px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:24px;
-      color:#5d6d7a;
-      font-weight:500;
-    }
-
-    @media (max-width: 1100px){
-      .main-grid{
-        grid-template-columns:1fr;
-      }
-
-      .map-card{
-        min-height:unset;
-      }
-
-      .right-panel{
-        align-items:center;
-      }
-
-      .right-title{
-        text-align:center;
-      }
-
-      .section-list{
-        width:100%;
-      }
-    }
-
-    @media (max-width: 700px){
-      .page{
-        padding:12px;
-      }
-
-      .main-box{
-        padding:22px 18px 28px;
-      }
-
-      .map-card{
-        padding:14px;
-      }
-
-      .section-btn{
-        padding:13px 16px;
-        min-height:54px;
-      }
-
-      .section-label{
-        font-size:0.95rem;
-      }
-
-      .section-arrow{
-        font-size:1.5rem;
-      }
-    }
-  </style>
+    <style>
+        /* Estilos base con la tipografía solicitada y colores de la paleta */
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #F3F6F9; 
+            color: #0F172A; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .bg-pattern {
+            background-image: radial-gradient(#E6EDF3 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+    </style>
 </head>
-<body>
+<body class="relative bg-pattern">
 
-  <div class="page">
-    <div class="wrapper">
+    <!-- Encabezado Institucional -->
+    <div class="bg-[#0B5F8D] p-6 text-center flex flex-col items-center shadow-lg border-b-4 border-[#084A6F] relative z-20">
+        <img src="https://www.pjbonaerense.org.ar/wp-content/uploads/2023/07/logo-PJ-Bonaerense.png" alt="Logo PJ Bonaerense" class="h-20 mb-4 object-contain drop-shadow-md">
+        <h1 class="text-3xl font-extrabold text-[#FFFFFF] uppercase tracking-widest">SISTEMA DE INFORMACIÓN TERRITORIAL</h1>
+    </div>
 
-      <header class="header">
-        <img src="imagenes/header-pj-pba.png" alt="Partido Justicialista Provincia de Buenos Aires">
-      </header>
-
-      <main class="main-box">
-        <div class="main-grid">
-
-          <section class="map-panel">
-            <div class="map-card">
-              <img src="imagenes/imagenes/mapa_secciones_pba_azul.png" alt="Mapa de la provincia de Buenos Aires dividido por secciones electorales">
+    <!-- Contenedor Principal -->
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 flex-1 w-full flex flex-col justify-center">
+        
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-black text-[#0F172A] tracking-tight mb-3">Módulos Distritales</h2>
+            <p class="text-[#64748B] font-medium max-w-2xl mx-auto">Seleccione un distrito para acceder a su panel de control, visualización geoespacial y reportes ejecutivos asociados.</p>
+        </div>
+        
+        <!-- Grilla de Accesos a los Distritos -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto w-full">
+            
+            <!-- Tarjeta Rojas -->
+            <div class="bg-[#FFFFFF] rounded-xl shadow-md overflow-hidden card-hover border border-[#E6EDF3] border-t-4 border-t-[#0B5F8D] flex flex-col">
+                <div class="bg-[#F3F6F9] border-b border-[#E6EDF3] px-6 py-4 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-[#EAF1F7] p-2 rounded-lg"><i data-lucide="map-pin" class="text-[#0B5F8D] h-5 w-5"></i></div>
+                        <h3 class="text-[10px] font-bold text-[#64748B] uppercase tracking-wider">Distrito</h3>
+                    </div>
+                    <span class="bg-[#EAF1F7] text-[#0B5F8D] text-[9px] font-bold px-2 py-1 rounded border border-[#D1E1F0]">SEGUNDA</span>
+                </div>
+                <div class="p-8 flex flex-col justify-center items-center flex-1">
+                    <p class="text-3xl font-extrabold text-[#0F172A] mb-6 text-center tracking-tight">Rojas</p>
+                    <a href="Dashboard_Territorial_Rojas.html" class="flex items-center justify-center gap-2 px-6 py-3 bg-[#0B5F8D] text-[#FFFFFF] rounded-full font-bold hover:bg-[#084A6F] transition-all shadow-md hover:shadow-lg w-full text-sm">
+                        <i data-lucide="layout-dashboard" class="h-4 w-4"></i> Acceder al Panel
+                    </a>
+                </div>
             </div>
-          </section>
 
-          <aside class="right-panel">
-            <h2 class="right-title">Secciones Electorales</h2>
-
-            <div class="section-list">
-              <a class="section-btn s1" href="seccion1.html">
-                <span class="section-label">1° Sección Electoral</span>
-                <span class="section-arrow">›</span>
-              </a>
-
-              <a class="section-btn s2" href="seccion2.html">
-                <span class="section-label">2° Sección Electoral</span>
-                <span class="section-arrow">›</span>
-              </a>
-
-              <a class="section-btn s3" href="seccion3.html">
-                <span class="section-label">3° Sección Electoral</span>
-                <span class="section-arrow">›</span>
-              </a>
-
-              <a class="section-btn s4" href="seccion4.html">
-                <span class="section-label">4° Sección Electoral</span>
-                <span class="section-arrow">›</span>
-              </a>
-
-              <a class="section-btn s5" href="seccion5.html">
-                <span class="section-label">5° Sección Electoral</span>
-                <span class="section-arrow">›</span>
-              </a>
-
-              <a class="section-btn s6" href="seccion6.html">
-                <span class="section-label">6° Sección Electoral</span>
-                <span class="section-arrow">›</span>
-              </a>
-
-              <a class="section-btn s7" href="seccion7.html">
-                <span class="section-label">7° Sección Electoral</span>
-                <span class="section-arrow">›</span>
-              </a>
-
-              <a class="section-btn s8" href="seccion8.html">
-                <span class="section-label">8° Sección Electoral</span>
-                <span class="section-arrow">›</span>
-              </a>
+            <!-- Tarjeta Carlos Casares -->
+            <div class="bg-[#FFFFFF] rounded-xl shadow-md overflow-hidden card-hover border border-[#E6EDF3] border-t-4 border-t-[#0B5F8D] flex flex-col">
+                <div class="bg-[#F3F6F9] border-b border-[#E6EDF3] px-6 py-4 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-[#EAF1F7] p-2 rounded-lg"><i data-lucide="map-pin" class="text-[#0B5F8D] h-5 w-5"></i></div>
+                        <h3 class="text-[10px] font-bold text-[#64748B] uppercase tracking-wider">Distrito</h3>
+                    </div>
+                    <span class="bg-[#EAF1F7] text-[#0B5F8D] text-[9px] font-bold px-2 py-1 rounded border border-[#D1E1F0]">CUARTA</span>
+                </div>
+                <div class="p-8 flex flex-col justify-center items-center flex-1">
+                    <p class="text-3xl font-extrabold text-[#0F172A] mb-6 text-center tracking-tight">Carlos Casares</p>
+                    <a href="Dashboard_Territorial_Carlos_Casares.html" class="flex items-center justify-center gap-2 px-6 py-3 bg-[#0B5F8D] text-[#FFFFFF] rounded-full font-bold hover:bg-[#084A6F] transition-all shadow-md hover:shadow-lg w-full text-sm">
+                        <i data-lucide="layout-dashboard" class="h-4 w-4"></i> Acceder al Panel
+                    </a>
+                </div>
             </div>
-          </aside>
+
+            <!-- Tarjeta Bragado -->
+            <div class="bg-[#FFFFFF] rounded-xl shadow-md overflow-hidden card-hover border border-[#E6EDF3] border-t-4 border-t-[#0B5F8D] flex flex-col">
+                <div class="bg-[#F3F6F9] border-b border-[#E6EDF3] px-6 py-4 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-[#EAF1F7] p-2 rounded-lg"><i data-lucide="map-pin" class="text-[#0B5F8D] h-5 w-5"></i></div>
+                        <h3 class="text-[10px] font-bold text-[#64748B] uppercase tracking-wider">Distrito</h3>
+                    </div>
+                    <span class="bg-[#EAF1F7] text-[#0B5F8D] text-[9px] font-bold px-2 py-1 rounded border border-[#D1E1F0]">CUARTA</span>
+                </div>
+                <div class="p-8 flex flex-col justify-center items-center flex-1">
+                    <p class="text-3xl font-extrabold text-[#0F172A] mb-6 text-center tracking-tight">Bragado</p>
+                    <a href="Dashboard_Territorial_Bragado.html" class="flex items-center justify-center gap-2 px-6 py-3 bg-[#0B5F8D] text-[#FFFFFF] rounded-full font-bold hover:bg-[#084A6F] transition-all shadow-md hover:shadow-lg w-full text-sm">
+                        <i data-lucide="layout-dashboard" class="h-4 w-4"></i> Acceder al Panel
+                    </a>
+                </div>
+            </div>
 
         </div>
-      </main>
 
-      <footer class="footer">
-        PJ Provincia de Buenos Aires · Panel de acceso a secciones y municipios
-      </footer>
+        <div class="mt-16 text-center">
+            <div class="inline-flex items-center justify-center gap-2 bg-[#FFFFFF] px-4 py-2 rounded-full border border-[#E6EDF3] shadow-sm text-xs font-bold text-[#64748B]">
+                <i data-lucide="folder-open" class="h-4 w-4 text-[#0B5F8D]"></i> 3 Archivos Locales Detectados
+            </div>
+        </div>
 
     </div>
-  </div>
 
+    <!-- Pie de página -->
+    <div class="bg-[#0F172A] text-center py-6 mt-auto">
+        <p class="text-[#64748B] text-xs font-medium flex items-center justify-center gap-2">
+            <i data-lucide="shield-check" class="h-4 w-4"></i> Sistema de Información Territorial v4.7
+        </p>
+    </div>
+
+    <script>
+        // Inicializar iconos
+        lucide.createIcons();
+    </script>
 </body>
 </html>
