@@ -39,9 +39,8 @@
 <body class="relative bg-pattern">
 
     <!-- Encabezado Institucional -->
-    <div class="bg-[#0B5F8D] p-6 text-center flex flex-col items-center shadow-lg border-b-4 border-[#084A6F] relative z-20">
-        <img src="https://www.pjbonaerense.org.ar/wp-content/uploads/2023/07/logo-PJ-Bonaerense.png" alt="Logo PJ Bonaerense" class="h-20 mb-4 object-contain drop-shadow-md">
-        <h1 class="text-3xl font-extrabold text-[#FFFFFF] uppercase tracking-widest">SISTEMA DE INFORMACIÓN TERRITORIAL</h1>
+    <div class="bg-[#135A88] flex flex-col items-center shadow-lg border-b-4 border-[#084A6F] relative z-20">
+        <img src="headerpba.png" alt="Panel de Análisis Territorial PBA - Partido Justicialista" class="w-full max-w-5xl object-contain">
     </div>
 
     <!-- Contenedor Principal -->
@@ -53,20 +52,20 @@
         </div>
         
         <!-- Grilla de Accesos a los Distritos -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto w-full">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto w-full">
             
-            <!-- Tarjeta Rojas -->
+            <!-- Tarjeta Bragado -->
             <div class="bg-[#FFFFFF] rounded-xl shadow-md overflow-hidden card-hover border border-[#E6EDF3] border-t-4 border-t-[#0B5F8D] flex flex-col">
                 <div class="bg-[#F3F6F9] border-b border-[#E6EDF3] px-6 py-4 flex items-center justify-between">
                     <div class="flex items-center gap-3">
                         <div class="bg-[#EAF1F7] p-2 rounded-lg"><i data-lucide="map-pin" class="text-[#0B5F8D] h-5 w-5"></i></div>
                         <h3 class="text-[10px] font-bold text-[#64748B] uppercase tracking-wider">Distrito</h3>
                     </div>
-                    <span class="bg-[#EAF1F7] text-[#0B5F8D] text-[9px] font-bold px-2 py-1 rounded border border-[#D1E1F0]">SEGUNDA</span>
+                    <span class="bg-[#EAF1F7] text-[#0B5F8D] text-[9px] font-bold px-2 py-1 rounded border border-[#D1E1F0]">CUARTA</span>
                 </div>
                 <div class="p-8 flex flex-col justify-center items-center flex-1">
-                    <p class="text-3xl font-extrabold text-[#0F172A] mb-6 text-center tracking-tight">Rojas</p>
-                    <a href="Dashboard_Territorial_Rojas.html" class="flex items-center justify-center gap-2 px-6 py-3 bg-[#0B5F8D] text-[#FFFFFF] rounded-full font-bold hover:bg-[#084A6F] transition-all shadow-md hover:shadow-lg w-full text-sm">
+                    <p class="text-3xl font-extrabold text-[#0F172A] mb-6 text-center tracking-tight">Bragado</p>
+                    <a href="Dashboard_Territorial_Bragado.html" class="flex items-center justify-center gap-2 px-6 py-3 bg-[#0B5F8D] text-[#FFFFFF] rounded-full font-bold hover:bg-[#084A6F] transition-all shadow-md hover:shadow-lg w-full text-sm">
                         <i data-lucide="layout-dashboard" class="h-4 w-4"></i> Acceder al Panel
                     </a>
                 </div>
@@ -84,23 +83,6 @@
                 <div class="p-8 flex flex-col justify-center items-center flex-1">
                     <p class="text-3xl font-extrabold text-[#0F172A] mb-6 text-center tracking-tight">Carlos Casares</p>
                     <a href="Dashboard_Territorial_Carlos_Casares.html" class="flex items-center justify-center gap-2 px-6 py-3 bg-[#0B5F8D] text-[#FFFFFF] rounded-full font-bold hover:bg-[#084A6F] transition-all shadow-md hover:shadow-lg w-full text-sm">
-                        <i data-lucide="layout-dashboard" class="h-4 w-4"></i> Acceder al Panel
-                    </a>
-                </div>
-            </div>
-
-            <!-- Tarjeta Bragado -->
-            <div class="bg-[#FFFFFF] rounded-xl shadow-md overflow-hidden card-hover border border-[#E6EDF3] border-t-4 border-t-[#0B5F8D] flex flex-col">
-                <div class="bg-[#F3F6F9] border-b border-[#E6EDF3] px-6 py-4 flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="bg-[#EAF1F7] p-2 rounded-lg"><i data-lucide="map-pin" class="text-[#0B5F8D] h-5 w-5"></i></div>
-                        <h3 class="text-[10px] font-bold text-[#64748B] uppercase tracking-wider">Distrito</h3>
-                    </div>
-                    <span class="bg-[#EAF1F7] text-[#0B5F8D] text-[9px] font-bold px-2 py-1 rounded border border-[#D1E1F0]">CUARTA</span>
-                </div>
-                <div class="p-8 flex flex-col justify-center items-center flex-1">
-                    <p class="text-3xl font-extrabold text-[#0F172A] mb-6 text-center tracking-tight">Bragado</p>
-                    <a href="Dashboard_Territorial_Bragado.html" class="flex items-center justify-center gap-2 px-6 py-3 bg-[#0B5F8D] text-[#FFFFFF] rounded-full font-bold hover:bg-[#084A6F] transition-all shadow-md hover:shadow-lg w-full text-sm">
                         <i data-lucide="layout-dashboard" class="h-4 w-4"></i> Acceder al Panel
                     </a>
                 </div>
@@ -127,7 +109,7 @@
 
         <div class="mt-16 text-center">
             <div class="inline-flex items-center justify-center gap-2 bg-[#FFFFFF] px-4 py-2 rounded-full border border-[#E6EDF3] shadow-sm text-xs font-bold text-[#64748B]">
-                <i data-lucide="folder-open" class="h-4 w-4 text-[#0B5F8D]"></i> 4 Archivos Locales Detectados
+                <i data-lucide="folder-open" class="h-4 w-4 text-[#0B5F8D]"></i> 3 Archivos Locales Detectados
             </div>
         </div>
 
